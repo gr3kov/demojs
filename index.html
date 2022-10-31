@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<META name="author" content="OLEG">
+</META>
+<title>Пример</title>
+
+
+
+
+<script type="text/javascript">
+
+	let header = document.querySelector('header'); 
+
+	
+let mixData = [{distance: {"unit":"m","value": 0.5}, "convert_to": "ft"}];
+/*var xhr = new XMLHttpRequest();
+var url = "/masiv.JSON";
+  
+// Вызываем при изменении атрибута readyState
+xhr.onreadystatechange = function() {
+  // Проверяем, выполнен ли запрос на получение
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    // Разбираем строку JSON
+    var jsonData = JSON.parse(xhr.responseText); 
+    // Вызываем showArtists() и передаём разобранный JSON
+    showData(jsonData);
+  }
+};
+
+
+xhr.open("GET", url, true);
+xhr.send();
+
+function showData(data) {
+  var output = "<ul>"; // Открываем список
+  var i;
+
+  // Перебираем исполнителей и добавляем их как пункты списка
+  for (var i in data.artists) {
+    output += "<li>" + data.artists[i].artistname + " (Родился: " + data.artists[i].born + ")</li>"; 
+  
+  
+  output += "</ul>"; // Закрываем список
+  // Выводим данные в элементе artistlist
+  document.getElementById("Dist").innerHTML = output;
+}
+*/
+</script>
+
+
+
+
+</head>
+<script type="text/javascript">console.log(mixData[0].convert_to)</script>
+        
+    <section>
+    </section>
+    <body>
+
+        <input type="text" placeholder="Distance" class="Dist" />
+
+        <div id="Dist"></div>
+
+
+
+
+    </body>
+
+</html>
+

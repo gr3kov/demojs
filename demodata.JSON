@@ -1,0 +1,16 @@
+{
+  "Distance" : [
+    { 
+      "unit" : "metr",
+      "value" : "2"
+    },
+    { 
+      "unit" : "santimetr",
+      "value" : "1" 
+    },
+    { 
+      "unit" : "milimetr",
+      "value" : "3"
+    }
+  ]
+}
