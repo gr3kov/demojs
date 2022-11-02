@@ -9,10 +9,57 @@
 
 
 
+<!--<form onsubmit="FromTo(A.value, B.value)">
+  <label for="A">Откуда </label><input name="A"><br>
+  <label for="B">Куда</label><input name="B"><br>
+  <input value="Send" type="submit"> код формы для отправки
+</form>-->
+
+
 
 <script type="text/javascript">
 
-	let header = document.querySelector('header'); 
+var workersTable = document.getElementById('dist'),
+    info = document.getElementById('info'),
+    requestURL = 'data.json', //файл находится в той же папке, что и html-файл, который к нему обращается
+    request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.onload = function(e) {
+    if (request.readyState === 4) {
+        if (request.status === 200) {
+            console.log(request.response);
+            var dataTable = JSON.parse(request.responseText);
+            getTableInfo(dataTable);
+        } else {
+            console.error(request.statusText);
+        }
+    }
+};
+request.onerror = function(e) {
+    console.error(request.statusText);
+};
+request.send();
+
+function getTableInfo(data) {
+    info.innerHTML = `<h2>Компания: ${data.companyName}</h2>
+         <p>Адрес: ${data.city}, ${data.address}</p> 
+         <p>Дата основания: ${data.birthday}</p>`;
+    let headerTr = document.createElement('tr');
+    headerTr.innerHTML = `<th>ФИО</th><th>Должность</th><th>Email</th>
+                         <th>Телефон</th><th>Приемные дни/часы</th>`;
+    workersTable.appendChild(headerTr);
+ // console.log(Array.isArray(data.workers));
+    data.workers.forEach(function(elem) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `<td>${elem.name}</td><td>${elem.position}</td>
+              <td>${elem.email}</td><td>${elem.phone}</td>
+              <td>${elem.active}</td>`;
+        workers.appendChild(tr);
+    });
+}
+
+
+	let innerDist = document.querySelector(".Dist"); 
 
 	
 let mixData = [{distance: {"unit":"m","value": 0.5}, "convert_to": "ft"},{distance: {"unit":"cm","value": 50}, "convert_to": "yard"}];
@@ -54,20 +101,45 @@ function showData(data) {
 
 
 </head>
-<script type="text/javascript">console.log(mixData[1].convert_to)</script>
+<script type="text/javascript">
+//console.log(mixData[1].convert_to) проверка вывода элементов джсон
+console.log(innerDist);
+
+
+/*let animals = [{
+    name: "Mikky",
+    type: 'dog',
+    age: 3,
+    stock: {
+        price: 13.9,
+        isSold: true,
+        acsessories: ['ball']
+    }
+}, {
+    name: "Neon",
+    type: 'cat',
+    age: .5,
+    stock: {
+        price: 59.7,
+        isSold: false,
+        acsessories: null
+    }
+}];
+document.write('<p>' + JSON.stringify(mixData) + '</p>');
+*/
+
+</script>
         
     <section>
     </section>
     <body>
 
-        <input type="text" placeholder="Distance" class="Dist" />
+        <!--<input type="text" placeholder="Distance" class="Dist" />-->
 
-        <div id="Dist"></div>
-
-
+        <div id="info"></div>
+        <table id="dist"></table>
 
 
     </body>
 
 </html>
-
