@@ -41,21 +41,20 @@ request.onerror = function(e) {
 request.send();
 
 function getTableInfo(data) {
-    info.innerHTML = `<h2>Компания: ${data.companyName}</h2>
-         <p>Адрес: ${data.city}, ${data.address}</p> 
-         <p>Дата основания: ${data.birthday}</p>`;
-    let headerTr = document.createElement('tr');
-    headerTr.innerHTML = `<th>ФИО</th><th>Должность</th><th>Email</th>
-                         <th>Телефон</th><th>Приемные дни/часы</th>`;
-    workersTable.appendChild(headerTr);
- // console.log(Array.isArray(data.workers));
+    info.innerHTML = `<h2>Distance in metr: ${data.value}</h2> 
+         <p>Переводим в: ${data.convert_to}</p>`;
+    //let headerTr = document.createElement('tr');
+    //headerTr.innerHTML = `<th>ФИО</th><th>Должность</th><th>Email</th>
+                        // <th>Телефон</th><th>Приемные дни/часы</th>`;
+    //workersTable.appendChild(headerTr);
+ /* console.log(Array.isArray(data.workers));
     data.workers.forEach(function(elem) {
         let tr = document.createElement('tr');
         tr.innerHTML = `<td>${elem.name}</td><td>${elem.position}</td>
               <td>${elem.email}</td><td>${elem.phone}</td>
               <td>${elem.active}</td>`;
         workers.appendChild(tr);
-    });
+    });*/
 }
 
 
@@ -103,7 +102,7 @@ function showData(data) {
 </head>
 <script type="text/javascript">
 //console.log(mixData[1].convert_to) проверка вывода элементов джсон
-console.log(innerDist);
+//console.log(innerDist);
 
 
 /*let animals = [{
