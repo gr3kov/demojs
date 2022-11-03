@@ -18,11 +18,48 @@
 
 
 <script type="text/javascript">
+oAJAX = new XMLHttpRequest();
+oAJAX.open("GET","data.json", true);
+oAJAX.onreadystatechange = function () {
+  var oData;
+    var oOutput = document.getElementById("info");
+    if ((oAJAX.readyState == 4) && (oAJAX.status == 200)) {
+        var oData = JSON.parse(oAJAX.responseText);
+        {
+          console.log(' Hello', oData.convert_to);
+            var oP;
+            for (i in oData.distance ){
+              console.log(oData.distance[i]);
+              console.log('FFF', oData);
 
-var workersTable = document.getElementById('dist'),
+              if (!oData.distance.value) {
+                 break;
+                }
+
+              else{
+                console.log(oData.distance)
+                oP = document.createElement ("p");
+            console.log(oData.distance[i])
+            oP.textContent = oData.distance.unit + "   " + oData.distance.value; 
+            oOutput.appendChild(oP);
+              }
+            
+          }
+      } 
+    }
+
+}
+
+oAJAX.send();
+
+
+
+
+/*var workersTable = document.getElementById('dist'),
     info = document.getElementById('info'),
     requestURL = 'data.json', //файл находится в той же папке, что и html-файл, который к нему обращается
     request = new XMLHttpRequest();
+
 request.open('GET', requestURL);
 request.onload = function(e) {
     if (request.readyState === 4) {
@@ -30,6 +67,7 @@ request.onload = function(e) {
             console.log(request.response);
             var dataTable = JSON.parse(request.responseText);
             getTableInfo(dataTable);
+            console.log(dataTable);
         } else {
             console.error(request.statusText);
         }
@@ -54,7 +92,7 @@ function getTableInfo(data) {
               <td>${elem.email}</td><td>${elem.phone}</td>
               <td>${elem.active}</td>`;
         workers.appendChild(tr);
-    });*/
+    });
 }
 
 
@@ -94,6 +132,7 @@ function showData(data) {
   document.getElementById("Dist").innerHTML = output;
 }
 */
+
 </script>
 
 
@@ -126,7 +165,6 @@ function showData(data) {
 }];
 document.write('<p>' + JSON.stringify(mixData) + '</p>');
 */
-
 </script>
         
     <section>
