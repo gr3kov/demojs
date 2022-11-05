@@ -16,21 +16,33 @@
 </form>-->
 
 
-
 <script type="text/javascript">
+
 oAJAX = new XMLHttpRequest();
 oAJAX.open("GET","data.json", true);
 oAJAX.onreadystatechange = function () {
   var oData;
+  const accessToInner = outerData();
+
     var oOutput = document.getElementById("info");
     if ((oAJAX.readyState == 4) && (oAJAX.status == 200)) {
         var oData = JSON.parse(oAJAX.responseText);
+
+        function outerData(){
+          if(oData.convert_to == 'ft'){let pereshetka = oData.value * 3.2808; }
+          return pereshetka;
+          }
+
+          
+        //const result = {unit: oData.convert_to, value: convertFunction(oData.distance.value,  oData.distance.unit, oData.convert_to)}
+
         {
-          console.log(' Hello', oData.convert_to);
+          //console.log(' Hello', result);
             var oP;
+            var Dlinacount = oData.distance.lenght;
             for (i in oData.distance ){
               console.log(oData.distance[i]);
-              console.log('FFF', oData);
+              console.log('HERNA', oData.distance.value);
 
               if (!oData.distance.value) {
                  break;
@@ -46,8 +58,9 @@ oAJAX.onreadystatechange = function () {
             
           }
       } 
-    }
+      console.log(accessToInner);
 
+    }
 }
 
 oAJAX.send();
