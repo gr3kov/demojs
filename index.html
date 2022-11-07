@@ -18,22 +18,24 @@
 
 <script type="text/javascript">
 
+  var pereshetka=0;
+
 oAJAX = new XMLHttpRequest();
 oAJAX.open("GET","data.json", true);
 oAJAX.onreadystatechange = function () {
   var oData;
-  const accessToInner = outerData();
+  //const accessToInner = outerData();
 
     var oOutput = document.getElementById("info");
     if ((oAJAX.readyState == 4) && (oAJAX.status == 200)) {
         var oData = JSON.parse(oAJAX.responseText);
 
-        function outerData(){
-          if(oData.convert_to == 'ft'){let pereshetka = oData.value * 3.2808; }
-          return pereshetka;
-          }
+function outerData(){
+          if(oData.convert_to === "ft"){pereshetka = oData.value * 3.2808; 
+                      console.log('GGGGGGGGGG',pereshetka);
 
-          
+          }
+          }
         //const result = {unit: oData.convert_to, value: convertFunction(oData.distance.value,  oData.distance.unit, oData.convert_to)}
 
         {
@@ -55,10 +57,14 @@ oAJAX.onreadystatechange = function () {
             oP.textContent = oData.distance.unit + "   " + oData.distance.value; 
             oOutput.appendChild(oP);
               }
-            
+
           }
       } 
-      console.log(accessToInner);
+           // let recount = outerData(pereshetka);
+            let mygav = outerData();
+            console.log(mygav);
+
+      //console.log(accessToInner);
 
     }
 }
